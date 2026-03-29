@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="Guía profesional de nutrición deportiva y bariátrica - Planes personalizados según objetivo y nivel">
+<title>Nutrición Deportiva & Bariátrica PRO | Ayleen González</title>
+
+<style>
+:root {
+    --verde: #80ed99;
+    --verde2: #38b000;
+    --lila: #e0aaff;
+    --lilaSoft: #f3e8ff;
+    --amarillo: #fff3b0;
+    --bg: #C8F8EC;
+    --texto: #222;
+    --gris: #6c757d;
+    --dark: #2d3748;
+    --error: #e74c3c;
+    --exito: #27ae60;
+    --card-bg: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background: var(--bg);
+    color: var(--texto);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* Estilos para encabezados con Garamond negrita */
+h1, h2, h3, h4, .nivel h3, .receta h3, .form-card h3 {
+    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--verde2);
+}
+
+/* Header con animación de brillo */
+header {
+    background: linear-gradient(135deg, var(--lila), var(--verde));
+    padding: 2.5rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--verde2);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+header h1 {
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(45deg, #2d3748, #4a5568);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 5px rgba(56,176,0,0.3); }
+    to { text-shadow: 0 0 20px rgba(56,176,0,0.6); }
+}
+
+nav {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+nav button {
+    background: white;
+    border: none;
+    padding: 0.8rem 1.3rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+nav button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(56,176,0,0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+nav button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+nav button:hover {
+    transform: translateY(-2px);
+    background: var(--lilaSoft);
+}
+
+main {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+section {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    animation: fadeInUp 0.6s ease;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(56,176,0,0.2);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    font-size: 1.8rem;
+    border-left: 5px solid var(--verde2);
+    padding-left: 1rem;
+}
+
+h3 {
+    color: var(--verde2);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+/* Cards y niveles */
+.nivel, .receta, .objetivo-card {
+    background: var(--lilaSoft);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(56,176,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.nivel:hover, .receta:hover, .objetivo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: var(--verde2);
+}
+
+/* Contenedor de imagen y texto */
+.contenido-con-imagen {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contenido-con-imagen .texto {
+    flex: 1;
+}
+
+.contenido-con-imagen .imagen {
+    flex: 0 0 300px;
+    text-align: center;
+}
+
+.contenido-con-imagen img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.contenido-con-imagen img:hover {
+    transform: scale(1.02);
+}
+
+/* Estilo para imágenes de recetas */
+.receta-imagen {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Formularios */
+.formulario-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.form-card {
+    background: var(--lilaSoft);
+    padding: 1.8rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border: 1px solid rgba(56,176,0,0.2);
+}
+
+.form-card h3 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--dark);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    font-family: 'Courier New', Courier, monospace;
+    background: white;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--verde2);
+    box-shadow: 0 0 0 3px rgba(56,176,0,0.1);
+}
+
+.form-group input[type="file"] {
+    padding: 0.5rem;
+    border: 2px dashed var(--verde2);
+    background: white;
+    cursor: pointer;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.btn-submit {
+    background: var(--verde2);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.btn-submit:hover {
+    background: var(--verde);
+    color: var(--dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(56,176,0,0.3);
+}
+
+.mensaje-confirmacion {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.mensaje-confirmacion.exito {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.mensaje-confirmacion.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botones de ver más */
+.ver-mas {
+    background: var(--verde2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.ver-mas:hover {
+    background: var(--verde);
+    color: var(--dark);
+    transform: scale(1.05);
+}
+
+.detalle {
+    display: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px dashed var(--verde);
+    animation: fadeIn 0.5s ease;
+}
+
+/* Grid de recetas */
+.recetas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Macros */
+.macros {
+    background: var(--amarillo);
+    padding: 0.8rem;
+    border-radius: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.macros span {
+    color: var(--verde2);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Tabla de rutinas */
+.rutina-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.rutina-table th, .rutina-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.rutina-table th {
+    background: var(--verde2);
+    color: white;
+    font-family: 'Garamond', 'Georgia', serif;
+    font-weight: bold;
+}
+
+.rutina-table tr:hover {
+    background: var(--lilaSoft);
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.badge-calorias { background: #ffd93d; color: #333; }
+.badge-proteinas { background: var(--verde2); color: white; }
+
+/* Footer */
+footer {
+    background: var(--lila);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    border-top: 3px solid var(--verde2);
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    color: var(--gris);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Estilos para listas */
+ul, ol {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+li {
+    margin-bottom: 0.3rem;
+}
+
+/* Estilos para texto en cards */
+.nivel p, .receta p {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--texto);
+}
+
+/* Nota informativa */
+.nota-informativa {
+    background: var(--amarillo);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+    
+    section {
+        padding: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .recetas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .formulario-container {
+        grid-template-columns: 1fr;
+    }
+    
+    nav button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .rutina-table {
+        font-size: 0.8rem;
+    }
+    
+    .contenido-con-imagen {
+        flex-direction: column;
+    }
+    
+    .contenido-con-imagen .imagen {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .macros {
+        font-size: 0.8rem;
+    }
+    
+    .nivel, .receta {
+        padding: 1rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🍽️ Nutrición Deportiva & Bariátrica</h1>
+    <p>Plan profesional según tu objetivo, nivel y fase postquirúrgica</p>
+    <nav>
+        <button onclick="mostrar('inicio')">🏠 Inicio</button>
+        <button onclick="mostrar('hipertrofia')">💪 Hipertrofia</button>
+        <button onclick="mostrar('deficit')">⚖️ Déficit Calórico</button>
+        <button onclick="mostrar('perdida-grasa')">🔥 Pérdida de Grasa</button>
+        <button onclick="mostrar('bariatrica')">🩺 Nutrición Bariátrica</button>
+        <button onclick="mostrar('recetas')">📖 Recetas Completas</button>
+        <button onclick="mostrar('formularios')">📝 Solicita Asesoría</button>
+    </nav>
+</header>
+
+<main>
+    <!-- Sección Inicio -->
+    <section id="inicio" class="sec">
+        <h2>🌟 Bienvenido a tu Transformación</h2>
+        <div style="text-align: center; padding: 2rem;">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem; font-family: 'Courier New', monospace;">🎯 Elige tu objetivo y comienza tu viaje hacia una vida más saludable</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                <div class="nivel" style="cursor: pointer;" onclick="mostrar('hipertrofia')">
+                    <h3>💪 Hipertrofia</h3>
+                    <p>Aumento de masa muscular</p>
+                </div>
+                <div class="nivel" style="cursor: pointer;" onclick="mostrar('deficit')">
+                    <h3>⚖️ Déficit Calórico</h3>
+                    <p>Pérdida de peso controlada</p>
+                </div>
+                <div class="nivel" style="cursor: pointer;" onclick="mostrar('perdida-grasa')">
+                    <h3>🔥 Pérdida de Grasa</h3>
+                    <p>Definición y tonificación</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Hipertrofia CON IMAGEN -->
+    <section id="hipertrofia" class="sec" style="display:none">
+        <h2>💪 Hipertrofia Muscular - Guía Completa</h2>
+        
+        <div class="contenido-con-imagen">
+            <div class="texto">
+                <div class="nivel">
+                    <h3>🥗 Alimentación para Hipertrofia</h3>
+                    <p><strong>Superávit calórico moderado:</strong> +300-500 kcal sobre tu mantenimiento</p>
+                    <p><strong>Proteínas:</strong> 1.8-2.2 g/kg de peso corporal</p>
+                    <p><strong>Carbohidratos:</strong> 4-6 g/kg (fundamental para energía)</p>
+                    <p><strong>Grasas saludables:</strong> 0.8-1 g/kg</p>
+                    <p><strong>Ejemplo de distribución:</strong> 30% proteínas, 50% carbohidratos, 20% grasas</p>
+                </div>
+            </div>
+            <div class="imagen">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48" alt="Persona entrenando hipertrofia" loading="lazy">
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--gris);">Entrenamiento de fuerza para hipertrofia</p>
+            </div>
+        </div>
+
+        <div class="nivel">
+            <h3>🏋️ Rutina de Entrenamiento (5 días)</h3>
+            <table class="rutina-table">
+                <thead>
+                    <tr><th>Día</th><th>Grupo Muscular</th><th>Ejercicios Clave</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Lunes</td><td>Pecho + Tríceps</td><td>Press banca, Fondos, Aperturas</td></tr>
+                    <tr><td>Martes</td><td>Espalda + Bíceps</td><td>Dominadas, Remo, Curl de bíceps</td></tr>
+                    <tr><td>Miércoles</td><td>Piernas</td><td>Sentadilla, Prensa, Femoral</td></tr>
+                    <tr><td>Jueves</td><td>Hombros + Abdomen</td><td>Press militar, Elevaciones laterales, Plancha</td></tr>
+                    <tr><td>Viernes</td><td>Full Body</td><td>Ejercicios compuestos, peso muerto, sentadilla</td></tr>
+                </tbody>
+            </table>
+            <p><strong>💡 Consejo:</strong> Descanso entre series: 60-90 segundos. 8-12 repeticiones por serie.</p>
+        </div>
+
+        <div class="recetas-grid">
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b" alt="Pollo con quinoa" loading="lazy">
+                <h3>🥩 Pechuga de Pollo al Horno con Quinoa</h3>
+                <div class="macros">📊 <span>Calorías: 550 kcal</span> | <span>Proteínas: 45g</span> | Carbos: 50g | Grasas: 12g</div>
+                <button class="ver-mas" onclick="toggle(this)">📖 Ver receta completa</button>
+                <div class="detalle">
+                    <h4>Ingredientes:</h4>
+                    <ul><li>200g pechuga de pollo</li><li>1 taza de quinoa cocida</li><li>Verduras al gusto</li><li>Especias</li><li>1 cda de aceite de oliva</li></ul>
+                    <h4>Paso a paso:</h4>
+                    <ol><li>Marinar el pollo con especias por 30 minutos</li><li>Hornear a 180°C por 20-25 minutos</li><li>Cocinar la quinoa</li><li>Saltear verduras</li><li>Servir todo junto</li></ol>
+                </div>
+            </div>
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1610970881699-44a5587cabec" alt="Batido proteico" loading="lazy">
+                <h3>🥣 Batido Hipercalórico</h3>
+                <div class="macros">📊 <span>Calorías: 650 kcal</span> | <span>Proteínas: 35g</span> | Carbos: 80g | Grasas: 20g</div>
+                <button class="ver-mas" onclick="toggle(this)">📖 Ver receta completa</button>
+                <div class="detalle">
+                    <h4>Ingredientes:</h4>
+                    <ul><li>1 taza de leche de avena</li><li>1 scoop de proteína</li><li>1 plátano</li><li>2 cdas de mantequilla de maní</li><li>1/2 taza de avena</li></ul>
+                    <h4>Paso a paso:</h4>
+                    <ol><li>Agregar todos los ingredientes a la licuadora</li><li>Licuar por 1 minuto</li><li>Servir frío</li></ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Déficit Calórico CON IMAGEN -->
+    <section id="deficit" class="sec" style="display:none">
+        <h2>⚖️ Déficit Calórico - Guía para Pérdida de Peso</h2>
+        
+        <div class="contenido-con-imagen">
+            <div class="texto">
+                <div class="nivel">
+                    <h3>🥗 Alimentación para Déficit Calórico</h3>
+                    <p><strong>Déficit moderado:</strong> 300-500 kcal menos de tu mantenimiento</p>
+                    <p><strong>Proteínas altas:</strong> 2.0-2.2 g/kg para preservar masa muscular</p>
+                    <p><strong>Carbohidratos estratégicos:</strong> 2-3 g/kg (en torno al entrenamiento)</p>
+                </div>
+            </div>
+            <div class="imagen">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b" alt="Cinta métrica midiendo cintura" loading="lazy">
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--gris);">Control de medidas y progreso</p>
+            </div>
+        </div>
+
+        <div class="nivel">
+            <h3>🏋️ Rutina de Entrenamiento (4 días)</h3>
+            <table class="rutina-table">
+                <thead><tr><th>Día</th><th>Entrenamiento</th><th>Intensidad</th></tr></thead>
+                <tbody>
+                    <tr><td>Lunes</td><td>Upper Body</td><td>3 series x 10-12 reps</td></tr>
+                    <tr><td>Martes</td><td>Lower Body</td><td>3 series x 12-15 reps</td></tr>
+                    <tr><td>Jueves</td><td>Full Body + HIIT</td><td>20 min HIIT post entreno</td></tr>
+                    <tr><td>Viernes</td><td>Upper + Lower</td><td>Circuitos de alta intensidad</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="recetas-grid">
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" alt="Ensalada de atún con aguacate" loading="lazy">
+                <h3>🥗 Ensalada de Atún con Aguacate</h3>
+                <div class="macros">📊 <span>Calorías: 380 kcal</span> | <span>Proteínas: 32g</span></div>
+                <button class="ver-mas" onclick="toggle(this)">📖 Ver receta completa</button>
+                <div class="detalle">
+                    <ul><li>1 lata de atún</li><li>1/2 aguacate</li><li>Mix de lechugas</li><li>Limón</li></ul>
+                    <ol><li>Mezclar todos los ingredientes</li><li>Aliñar con limón</li></ol>
+                </div>
+            </div>
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288" alt="Salmón con espárragos" loading="lazy">
+                <h3>🐟 Salmón al Vapor con Espárragos</h3>
+                <div class="macros">📊 <span>Calorías: 420 kcal</span> | <span>Proteínas: 40g</span></div>
+                <button class="ver-mas" onclick="toggle(this)">📖 Ver receta completa</button>
+                <div class="detalle">
+                    <ul><li>150g salmón</li><li>Espárragos</li><li>Limón</li></ul>
+                    <ol><li>Cocinar al vapor 12 min</li><li>Saltear espárragos</li><li>Aliñar con limón</li></ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Pérdida de Grasa -->
+    <section id="perdida-grasa" class="sec" style="display:none">
+        <h2>🔥 Pérdida de Grasa - Guía para Principiantes</h2>
+        
+        <div class="contenido-con-imagen">
+            <div class="texto">
+                <div class="nivel">
+                    <h3>📋 Cómo Comenzar: Generando Hábitos</h3>
+                    <p><strong>Paso 1:</strong> Establece horarios fijos para comer (4-5 comidas al día)</p>
+                    <p><strong>Paso 2:</strong> Aumenta tu consumo de agua (2-3 litros diarios)</p>
+                    <p><strong>Paso 3:</strong> Prioriza proteínas magras y vegetales</p>
+                    <p><strong>Paso 4:</strong> Reduce azúcares gradualmente</p>
+                    <p><strong>Paso 5:</strong> Duerme 7-8 horas</p>
+                </div>
+            </div>
+            <div class="imagen">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438" alt="Persona corriendo para pérdida de grasa" loading="lazy">
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--gris);">Cardio y hábitos saludables</p>
+            </div>
+        </div>
+
+        <div class="nivel">
+            <h3>🏃‍♀️ Rutina Básica (3 días)</h3>
+            <table class="rutina-table">
+                <thead><tr><th>Día</th><th>Actividad</th><th>Duración</th></tr></thead>
+                <tbody>
+                    <tr><td>Lunes</td><td>Cardio + Fuerza básica</td><td>30 min caminata + 20 min ejercicios</td></tr>
+                    <tr><td>Miércoles</td><td>Full Body</td><td>Sentadillas, lagartijas, plancha</td></tr>
+                    <tr><td>Viernes</td><td>Cardio divertido</td><td>Bailoterapia o ciclismo 45 min</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="recetas-grid">
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1510693206972-df098062cb71" alt="Omelette de espinacas" loading="lazy">
+                <h3>🍳 Omelette de Espinacas</h3>
+                <div class="macros">📊 <span>Calorías: 320 kcal</span> | <span>Proteínas: 28g</span></div>
+                <button class="ver-mas" onclick="toggle(this)">📖 Ver receta</button>
+                <div class="detalle"><p>3 claras + 1 huevo, espinacas, champiñones. Saltear y cocinar.</p></div>
+            </div>
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1488477181946-6428a0291777" alt="Yogur con frutos rojos" loading="lazy">
+                <h3>🥑 Yogur con Frutos Rojos</h3>
+                <div class="macros">📊 <span>Calorías: 290 kcal</span> | <span>Proteínas: 20g</span></div>
+                <button class="ver-mas" onclick="toggle(this)">📖 Ver receta</button>
+                <div class="detalle"><p>Yogur griego, frutos rojos, avena. Mezclar y disfrutar.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Bariátrica CON IMAGEN -->
+    <section id="bariatrica" class="sec" style="display:none">
+        <h2>🩺 Nutrición Bariátrica Especializada</h2>
+        
+        <div class="contenido-con-imagen">
+            <div class="texto">
+                <div class="nivel">
+                    <h3>📌 Post Cirugía Reciente (0-6 meses)</h3>
+                    <p><strong>Fase 1:</strong> Líquidos claros: caldos, gelatina sin azúcar</p>
+                    <p><strong>Fase 2:</strong> Papillas y purés: yogurt, cremas de verduras</p>
+                    <p><strong>Fase 3:</strong> Alimentos blandos: huevo, pescado desmenuzado</p>
+                    <p><strong>Fase 4:</strong> Incorporación progresiva: carnes magras picadas</p>
+                    <p><strong>🏋️ Entrenamiento:</strong> Caminatas suaves (10-20 min diarios)</p>
+                </div>
+            </div>
+            <div class="imagen">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b" alt="Asesoría bariátrica" loading="lazy">
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--gris);">Acompañamiento especializado</p>
+            </div>
+        </div>
+
+        <div class="nivel">
+            <h3>⭐ Bariátricos +2 Años (Establecidos)</h3>
+            <p><strong>Alimentación:</strong> 80-100g proteína/día, priorizar calcio, hierro y vitamina B12</p>
+            <p><strong>Entrenamiento:</strong> Fuerza 3-4 veces/semana, cardio moderado 150 min/semana</p>
+        </div>
+
+        <div class="recetas-grid">
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1547592180-85f173990554" alt="Crema de zapallo" loading="lazy">
+                <h3>🥣 Crema de Zapallo y Jengibre</h3>
+                <div class="macros">📊 Calorías: 180 kcal | Proteínas: 6g</div>
+                <button class="ver-mas" onclick="toggle(this)">📖 Ver receta</button>
+                <div class="detalle"><p>Zapallo, jengibre, caldo de verduras. Cocinar y licuar.</p></div>
+            </div>
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398" alt="Puré de pollo" loading="lazy">
+                <h3>🐔 Puré de Pollo y Zanahoria</h3>
+                <div class="macros">📊 Calorías: 250 kcal | Proteínas: 22g</div>
+                <button class="ver-mas" onclick="toggle(this)">📖 Ver receta</button>
+                <div class="detalle"><p>Pollo cocido, zanahoria, caldo. Procesar hasta hacer puré.</p></div>
+            </div>
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d" alt="Flan de proteína" loading="lazy">
+                <h3>🥚 Flan de Proteína</h3>
+                <div class="macros">📊 Calorías: 150 kcal | Proteínas: 20g</div>
+                <button class="ver-mas" onclick="toggle(this)">📖 Ver receta</button>
+                <div class="detalle"><p>Proteína, huevo, leche. Cocinar al horno a baño maría.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Recetas Completas CON IMAGENES -->
+    <section id="recetas" class="sec" style="display:none">
+        <h2>📖 Recetario Completo Fitness & Bariátrico</h2>
+        <div class="recetas-grid">
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" alt="Bowl energético" loading="lazy">
+                <h3>🥗 Bowl Energético con Quinoa</h3>
+                <div class="macros">📊 520 kcal | 28g proteína</div>
+                <button class="ver-mas" onclick="toggle(this)">Ver receta</button>
+                <div class="detalle"><p>Quinoa, pollo, aguacate, tomate, espinacas. Aderezo de limón y especias.</p></div>
+            </div>
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759" alt="Pancakes de avena" loading="lazy">
+                <h3>🍌 Pancakes de Avena y Proteína</h3>
+                <div class="macros">📊 380 kcal | 25g proteína</div>
+                <button class="ver-mas" onclick="toggle(this)">Ver receta</button>
+                <div class="detalle"><p>Avena, proteína, huevo, plátano, canela. Cocinar en sartén antiadherente.</p></div>
+            </div>
+            <div class="receta">
+                <img class="receta-imagen" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90" alt="Tacos de pescado" loading="lazy">
+                <h3>🐟 Tacos de Pescado</h3>
+                <div class="macros">📊 420 kcal | 32g proteína</div>
+                <button class="ver-mas" onclick="toggle(this)">Ver receta</button>
+                <div class="detalle"><p>Pescado blanco, tortillas de maíz, repollo, yogurt griego, limón.</p></div>
+            </div>
+            <div class="receta">
+                <img class="receta-imagen" src="C:\Users\Ayleen\Desktop\Front End\imagen.jpg" alt="Smoothie bowl" loading="lazy">
+                <h3>🥤 Smoothie Energizante</h3>
+                <div class="macros">📊 280 kcal | 18g proteína</div>
+                <button class="ver-mas" onclick="toggle(this)">Ver receta</button>
+                <div class="detalle"><p>Espinacas, plátano, leche de almendras, proteína, jengibre. Licuar y servir.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Formularios -->
+    <section id="formularios" class="sec" style="display:none">
+        <h2>📝 Solicita Asesoría Personalizada</h2>
+        <p style="text-align: center; margin-bottom: 2rem; font-family: 'Courier New', monospace;">Completa el formulario y recibe un plan adaptado a tus necesidades</p>
+        
+        <div class="formulario-container">
+            <!-- Formulario de Solicitud de Información -->
+            <div class="form-card">
+                <h3>📋 Solicita Información</h3>
+                <form id="formSolicitud">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono (opcional)</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                    <div class="form-group">
+                        <label for="objetivo">Objetivo principal *</label>
+                        <select id="objetivo" name="objetivo" required>
+                            <option value="">Selecciona tu objetivo</option>
+                            <option value="hipertrofia">Hipertrofia / Aumento muscular</option>
+                            <option value="deficit">Déficit calórico / Pérdida de peso</option>
+                            <option value="perdida-grasa">Pérdida de grasa / Definición</option>
+                            <option value="bariatrica">Nutrición bariátrica</option>
+                            <option value="salud-general">Salud general / Hábitos saludables</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje o consulta adicional</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntame más sobre ti, tu nivel de actividad, restricciones alimentarias, etc."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">📩 Enviar solicitud</button>
+                    <div id="mensajeSolicitud" class="mensaje-confirmacion"></div>
+                </form>
+            </div>
+
+            <!-- Formulario de InBody y Rutina Personalizada -->
+            <div class="form-card">
+                <h3>📊 Sube tu InBody + Rutina Personalizada</h3>
+                <form id="formInbody" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="nombre_inbody">Nombre completo *</label>
+                        <input type="text" id="nombre_inbody" name="nombre_inbody" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email_inbody">Correo electrónico *</label>
+                        <input type="email" id="email_inbody" name="email_inbody" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="objetivo_inbody">Objetivo *</label>
+                        <select id="objetivo_inbody" name="objetivo_inbody" required>
+                            <option value="">Selecciona tu objetivo</option>
+                            <option value="hipertrofia">Hipertrofia / Aumento muscular</option>
+                            <option value="deficit">Déficit calórico / Pérdida de peso</option>
+                            <option value="perdida-grasa">Pérdida de grasa / Definición</option>
+                            <option value="bariatrica">Nutrición bariátrica</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edad">Edad (años) *</label>
+                        <input type="number" id="edad" name="edad" required min="15" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="peso">Peso actual (kg) *</label>
+                        <input type="number" id="peso" name="peso" required step="0.1" min="30" max="300">
+                    </div>
+                    <div class="form-group">
+                        <label for="altura">Altura (cm) *</label>
+                        <input type="number" id="altura" name="altura" required step="0.1" min="100" max="250">
+                    </div>
+                    <div class="form-group">
+                        <label for="nivel_actividad">Nivel de actividad física *</label>
+                        <select id="nivel_actividad" name="nivel_actividad" required>
+                            <option value="">Selecciona tu nivel</option>
+                            <option value="sedentario">Sedentario (poco o ningún ejercicio)</option>
+                            <option value="ligero">Ligero (1-3 días/semana)</option>
+                            <option value="moderado">Moderado (3-5 días/semana)</option>
+                            <option value="activo">Activo (6-7 días/semana)</option>
+                            <option value="muy-activo">Muy activo (2 veces al día)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inbody">Adjuntar resultado InBody (PDF o imagen) *</label>
+                        <input type="file" id="inbody" name="inbody" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <small style="color: var(--gris);">Formatos aceptados: PDF, JPG, PNG (máx 5MB)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="restricciones">Restricciones alimentarias o lesiones</label>
+                        <textarea id="restricciones" name="restricciones" placeholder="Ej: alergias, lesiones, cirugías previas..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">🎯 Generar rutina personalizada</button>
+                    <div id="mensajeInbody" class="mensaje-confirmacion"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Nota informativa -->
+        <div class="nota-informativa">
+            <p style="font-family: 'Courier New', monospace;">✨ <strong>¿Cómo funciona?</strong> Al enviar tu solicitud, recibirás una respuesta personalizada en tu correo dentro de las próximas 48 horas con recomendaciones específicas según tu objetivo y análisis de tu InBody.</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; font-family: 'Courier New', monospace;">🔒 Tus datos están seguros y serán utilizados únicamente para fines de asesoría nutricional y deportiva.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p><strong>Ayleen González</strong> - Tu Bariátrica Consciente</p>
+    <p>📧 ayleengcortess@gmail.com | 📞 +56 9 6572 7298</p>
+    <div class="disclaimer">
+        <p>⚠️ <strong>Importante:</strong> Esta página tiene fines de orientación y estudiantil. Siempre consulta con profesionales de la salud (nutricionista, médico, preparador físico) antes de iniciar cualquier plan de alimentación o entrenamiento.</p>
+        <p>© 2024 - Todos los derechos reservados</p>
+    </div>
+</footer>
+
+<script>
+function mostrar(id) {
+    document.querySelectorAll('.sec').forEach(s => s.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggle(btn) {
+    let detalle = btn.nextElementSibling;
+    if (detalle.style.display === 'none' || detalle.style.display === '') {
+        detalle.style.display = 'block';
+        btn.textContent = '📖 Ocultar receta';
+    } else {
+        detalle.style.display = 'none';
+        btn.textContent = '📖 Ver receta completa';
+    }
+}
+
+// Manejo del formulario de solicitud de información
+document.getElementById('formSolicitud').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const objetivo = document.getElementById('objetivo').value;
+    const mensaje = document.getElementById('mensaje').value;
+    
+    if (!nombre || !email || !objetivo) {
+        mostrarMensaje('mensajeSolicitud', 'Por favor, completa todos los campos obligatorios (*)', 'error');
+        return;
+    }
+    
+    console.log('Datos enviados:', { nombre, email, objetivo, mensaje });
+    
+    mostrarMensaje('mensajeSolicitud', '✅ ¡Solicitud enviada con éxito! Te contactaremos en las próximas 48 horas.', 'exito');
+    this.reset();
+    
+    setTimeout(() => {
+        const msgDiv = document.getElementById('mensajeSolicitud');
+        msgDiv.style.display = 'none';
+        msgDiv.className = 'mensaje-confirmacion';
+    }, 5000);
+});
+
+// Manejo del formulario de InBody
+document.getElementById('formInbody').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const nombre = document.getElementById('nombre_inbody').value;
+    const email = document.getElementById('email_inbody').value;
+    const objetivo = document.getElementById('objetivo_inbody').value;
+    const edad = document.getElementById('edad').value;
+    const peso = document.getElementById('peso').value;
+    const altura = document.getElementById('altura').value;
+    const nivelActividad = document.getElementById('nivel_actividad').value;
+    const file = document.getElementById('inbody').files[0];
+    const restricciones = document.getElementById('restricciones').value;
+    
+    if (!nombre || !email || !objetivo || !edad || !peso || !altura || !nivelActividad || !file) {
+        mostrarMensaje('mensajeInbody', 'Por favor, completa todos los campos obligatorios (*) y adjunta tu InBody', 'error');
+        return;
+    }
+    
+    if (file.size > 5 * 1024 * 1024) {
+        mostrarMensaje('mensajeInbody', 'El archivo es demasiado grande. Máximo 5MB.', 'error');
+        return;
+    }
+    
+    const lector = new FileReader();
+    lector.onload = function(e) {
+        console.log('Archivo cargado:', file.name);
+        
+        const alturaM = altura / 100;
+        const imc = (peso / (alturaM * alturaM)).toFixed(1);
+        
+        let recomendacion = '';
+        switch(objetivo) {
+            case 'hipertrofia':
+                recomendacion = `Basado en tu IMC (${imc}), peso (${peso}kg) y nivel de actividad (${nivelActividad}), se recomienda un superávit calórico de 300-500 kcal, con ingesta proteica de ${(peso * 2).toFixed(0)}g diarios.`;
+                break;
+            case 'deficit':
+                recomendacion = `Para déficit calórico, se recomienda reducir 400-500 kcal de tu mantenimiento, con proteínas altas (${(peso * 2).toFixed(0)}g/día) para preservar masa muscular.`;
+                break;
+            case 'perdida-grasa':
+                recomendacion = `Estrategia de pérdida de grasa: déficit moderado de 300-400 kcal, priorizar entrenamiento de fuerza 3-4 veces/semana y cardio 150 min/semana.`;
+                break;
+            default:
+                recomendacion = `Plan personalizado según tu objetivo y composición corporal.`;
+        }
+        
+        mostrarMensaje('mensajeInbody', `✅ ¡Datos recibidos! Hemos generado una recomendación preliminar: ${recomendacion} Pronto recibirás un plan detallado a tu correo (${email}) con rutina personalizada y análisis de tu InBody.`, 'exito');
+        document.getElementById('formInbody').reset();
+        
+        setTimeout(() => {
+            const msgDiv = document.getElementById('mensajeInbody');
+            msgDiv.style.display = 'none';
+            msgDiv.className = 'mensaje-confirmacion';
+        }, 6000);
+    };
+    
+    lector.readAsDataURL(file);
+});
+
+function mostrarMensaje(elementId, texto, tipo) {
+    const msgDiv = document.getElementById(elementId);
+    msgDiv.textContent = texto;
+    msgDiv.className = `mensaje-confirmacion ${tipo}`;
+    msgDiv.style.display = 'block';
+}
+
+// Mostrar inicio por defecto
+mostrar('inicio');
+</script>
+
+</body>
+</html>
